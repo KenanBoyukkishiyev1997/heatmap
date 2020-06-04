@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+
+	<display-name>Operations Panel Central</display-name>
+	<description>Customizable Operations Panel</description>
+
+    <!-- Servlet to serve resource / language file through GET requests -->
+    <servlet>
+        <servlet-name>bundleServlet</servlet-name>
+        <servlet-class>com.qmatic.qp.common.servlet.BundleServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bundleServlet</servlet-name>
+        <url-pattern>/bundle/*</url-pattern>
+    </servlet-mapping>
+    <!-- bundleServlet end -->
+
+	
+	<!-- Start page -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+    <!--Security setup listener -->
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
+
+    <!--Security filter -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>com.qmatic.qp.core.aaa.shiro.QPShiroFilter</filter-class>
+    </filter>
+
+    <!--Default security filter that maps ALL -->
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+</web-app>

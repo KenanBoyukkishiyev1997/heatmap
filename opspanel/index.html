@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+		<meta name="viewport" content="user-scalable=no"/>
+		<title>Operations Panel</title>
+		
+        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="/css/css3.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery/jquery.ui.all.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dataTable.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/orchestra.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="css/ie7.css"/>
+        <![endif]-->
+        <!-- json2.js include for IE7 which does not have native JSON support, see http://www.json.org/js.html for source code and further info -->
+        <!--[if lt IE 8]>
+        <script type="text/javascript" src="scripts/json2.js"></script>
+        <![endif]-->
+		
+		<script type="text/javascript" src="scripts/jquery/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="scripts/jquery/jquery.tablesorter.js"></script>
+		<script type="text/javascript" src="scripts/jquery/jquery.i18n.properties.js"></script>
+		<script type="text/javascript" src="scripts/i18n.js"></script>
+		<script type="text/javascript" src="scripts/MIService.js"></script>
+		<script type="text/javascript" src="scripts/sessvars.js"></script>
+		<script type="text/javascript" src="scripts/script.js"></script>
+		<script type="text/javascript" src="scripts/util.js"></script>
+		<script type="text/javascript" src="scripts/dialog.js"></script>
+		<script type="text/javascript" src="scripts/settings.js"></script>
+	</head>
+	
+	<body>
+       <div id="containerWrapper">
+       <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div id="header" class="header">
+                    <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="orch-logo" style="width: 25%;">
+									<a id="homeLink" href="/" class="orch-icons" >
+										<img class="logo tr" src="/images/company_logo_header.png" alt="">
+									 </a>
+                                </td>
+                                <td class="orch-nav" style="width: 50%;">
+                                    <div id="appName" class="application-name" > </div><br />
+                                    <div class="settings">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <span id="branch"></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td class="orch-userinfo" style="width: 20%;">
+                                    <span id="userName"></span><br />
+                                    <a href="#" id="settingsLink" onclick="showSettings();this.blur();"></a><br/>
+                                    <a id="logoutLink" href="/logout.jsp" >Logout</a>
+                                </td>
+                                <td class="orch-actions" style="width: 5%;">
+                                    <div>
+                                        <a id="homeLink" href="/" class="orch-icons" >
+                                            <img id="homeImage" src="/images/icons/home.png" alt=""/>
+										 </a>
+                                        <a href="javascript:alert('Coming soon.');" class="orch-icons">
+                                            <img src="/images/icons/help.png" alt=""/>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="mainDatacontainer">
+			<!-- branch data -->
+			<div id="branchData">
+				<div class="dataPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_043_group.png">
+						<span id="panelCustomers" class="title"></span>
+					</div>
+					<span id="branchCustomers" class="metric">0</span>
+				</div>
+				<div class="dataPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_057_history.png">
+						<span id="panelMaxWait" class="title"></span>
+					</div>
+					<span class="metric"><span id="branchMaxWait" class="time">00:00:00</span></span>
+				</div>
+				<div class="dataPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_054_clock.png">
+						<span id="panelAvgWait" class="title"></span>
+					</div>
+					<span class="metric"><span id="branchAvgWait" class="time">00:00:00</span></span>
+				</div>
+				<div class="dataPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_003_user.png">
+						<span id="panelCounterOpen" class="title"></span>
+					</div>
+					<span id="branchCounterOpen" class="metric">0</span>
+				</div>
+				<div class="dataPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_024_parents.png">
+						<span id="panelCounterServing" class="title"></span>
+					</div>
+					<span id="branchCounterServing" class="metric">0</span>
+				</div>
+				<div class="dataPanel" id="webCamPanel">
+					<div class="dataHeader">
+						<img border="0" src="images/glyphicons_043_group.png">
+						<span id="panelWebCam" class="title"></span>
+					</div>
+					<span id="webCam" class="metric">
+					<input type="button" class="button" id="webCamOpen" onclick="javascript:showCam();"></input>
+					
+					</span>
+				</div>
+			</div>
+
+			<div class="panels">
+				<!-- Queues panel -->
+				<div id="queuePanel" class="panel">
+					<div class="panelHeader"><span id="queuesTitle"></span></div>
+					
+					<div class="panelContent">
+						<table id="queues" border="0" width="98%" cellpadding="3" cellspacing="0" class="display">
+							<thead>
+								<tr>
+									<th id="queuesHeaderName">Name</th>
+									<th id="queuesHeaderCustomers">Customers</th>
+									<th id="queuesHeaderWaitTime">Waiting time</th>
+									<th id="queuesHeaderEstimate">Estimated wait</th>
+									<!--th id="queuesHeaderOpen">Open counters</th-->
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+				
+				<!-- Workstations panel -->
+				<div id="workstationPanel" class="panel">
+					<div class="panelHeader"><span id="workstationsTitle"></span></div>
+					<div class="panelContent">
+						<table id="workstations" border="0" width="98%" cellpadding="3" cellspacing="0" class="display">
+							<thead>
+								<tr>
+									<th id="workstationsHeaderName" >Name</th>
+									<th id="workstationsHeaderStaff">Staff Member</th>
+									<th id="workstationsHeaderService">Service</th>
+									<th id="workstationsHeaderTicket">Ticket</th>
+									<th id="workstationsHeaderServingTime">Serving time</th>
+									<th id="workstationsHeaderCustomer">Customer</th>
+									<th id="workstationsHeaderProfile">Profile</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+		
+				<!-- branch selection modal -->
+		<div id="branchSelectPage" class="modalPage">
+			<div class="modalOpacityDiv"></div>
+			<div class="modalContainer">
+				<div class="branchForm roundedCorner5">
+					<h2 id="branchFormTitle"></h2>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td colspan="3" height="10px"></td>
+						</tr>
+						<tr height="30px">
+							<td width="20">&nbsp;&nbsp;</td>
+							<td width="120" align="right"><span id="branchSelect"></span>:&nbsp;&nbsp;</td>
+							<td>
+								<select id="branches"></select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" height="40px"></td>
+						</tr>
+						<tr>
+							<td width="20">&nbsp;&nbsp;</td>
+							<td colspan="2" align="center">
+								<input type="button" class="button" id="branchFormOK" onclick="javascript:setBranch();"></input>
+							</td>
+						</tr>	
+					</table>
+				</div>
+			</div>	
+		</div>
+		
+		
+		<!-- profile selection modal -->
+		<div id="profileSelectPage" class="modalPage">
+			<div class="modalOpacityDiv"></div>
+			<div class="modalContainer">
+				<div class="profileForm roundedCorner5">
+					<h2 id="profileFormTitle"></h2>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td colspan="3" height="10px"></td>
+						</tr>
+						<tr height="30px">
+							<td width="20">&nbsp;&nbsp;</td>
+							<td width="120" align="right"><span id="profileSelect"></span>:&nbsp;&nbsp;</td>
+							<td>
+								<select id="profiles"></select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" height="40px"></td>
+						</tr>
+						<tr>
+							<td width="20">&nbsp;&nbsp;</td>
+							<td colspan="2" align="center">
+								<input type="button" class="button" id="profileFormOK" onclick="javascript:setProfile();"></input>
+								<input type="button" class="button" id="profileFormCancel" onclick="javascript:dialog.hideModal('#profileSelectPage');"></input>
+							</td>
+						</tr>	
+					</table>
+				</div>
+			</div>	
+		</div>
+		
+		<div id="accessRightsPage" class="modalPage">
+			<div class="modalOpacityDiv"></div>
+			<div class="modalContainer">
+				<div class="accessRightsForm roundedCorner5">
+					<h2 id="accessRightsFormTitle">&nbsp;</h2>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td colspan="3" height="10px">
+								<div id="accessRightsContent"> </div>
+							
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" height="40px"></td>
+						</tr>
+						<tr>
+							<td width="20">&nbsp;&nbsp;</td>
+							<td colspan="2" align="center">
+								<input type="button" class="button" id="opspanelClose" onclick="javascript:handleHome()"></input>
+							</td>
+						</tr>	
+					</table>
+				</div>
+			</div>	
+		</div>
+		
+		
+		<!-- web cam view  -->
+		<div id="webCamPage" class="modalPage">
+			<div class="modalOpacityDiv"></div>
+			<div class="modalContainer">
+				<div class="webCamForm roundedCorner5">
+					<h2 id="webCamFormTitle">Web Cam</h2>
+					<br>
+						<div id="webCamScr"></div>
+					<br>
+					<input type="button" class="button" id="webCamClose" onclick="javascript:hideCam();"></input>
+					
+				</div>
+			</div>	
+		</div>
+		
+		<div id="servicePopup" class="popup"></div>
+
+		<div id="message"></div>
+        <div id="error"></div>
+		<div class="footer" style="position: relative; margin-top:-37px; height: 37px; padding: 0px; clear:both;">
+			<div id="footerContent" class="footerContent" style="padding-top: 10px;"></div>
+		</div>
+	
+	</body>
+</html>
+		

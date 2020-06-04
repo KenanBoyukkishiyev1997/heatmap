@@ -1,0 +1,373 @@
+
+html, body{margin:0; padding:0;	font-family: Arial, verdana, sans-serif; font-size:12px; height:100%;}
+
+a{text-decoration:none; color:#0000FF;}
+a:visited{color:#00F;}
+a:hover{text-decoration:underline;}
+a:active{color:#F00;}
+img{border:0 none;}
+select{-moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;}
+
+ul.direction-flexible-text {
+    padding: 0;
+    margin: 0;
+}
+
+ul.direction-flexible-text li {
+    display: inline-block;
+    list-style-type: none;
+}
+.widthPercent100{width:100%;}
+.normal{font-weight:normal;}
+.bold{font-weight:bold;}
+.alignOppositeNrml{text-align:right;}
+.alignCenter{text-align:center;}
+.fiftyFiftyMarg{margin:0 auto;}
+.roundedCorner3{-moz-border-radius:3px;	-webkit-border-radius:3px; border-radius:3px;}
+.roundedCorner5{-moz-border-radius:5px;	-webkit-border-radius:5px; border-radius:5px;}
+.dialogueBox{width:400px; background:#fff;}
+.dialogueBoxContent{text-align:center; padding:40px; font-weight:bold; font-size:16px;}
+.dialogueBoxContent p{line-height:1.6em;}
+.dialogueBoxContent a.customButtonSmall{float:none; display:inline-block; margin:30px 30px 0;}
+.dialogueBoxCancelLink{position:absolute; top:178px; right:15px;}
+
+/* Modal popup stuff*/
+.modalPage{position:absolute; top:0; left:0; width:100%; height:100%; display:none;}
+.modalPage h2 {
+	background: url("/images/bg_header.gif") repeat-x scroll 0 0 #123456;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0;
+    padding: 4px 10px;
+}
+
+.smallText {font-size:0.8em;}
+.modalContainer{z-index:1300;}
+.modalOpacityDiv{filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity:0.7; opacity:0.7; position:absolute; left:0;
+    top:0; bottom:0; right:0; z-index:1100; background:#999;}
+.modalContainer select{background:#fff; border:1px solid #9cb4d8; font-size:18px; min-width:206px; margin: 0;}
+
+.branchForm{
+	width:450px;
+}
+.profileForm{
+	width:450px;
+}
+.webCamForm{
+	width:80%;
+}
+.accessRightsForm{
+	width:450px;
+}
+	
+#message, #error {
+    position:fixed;
+    z-index: 9999;
+    visibility: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 3px 15px 0 15px;
+    width: 98%;
+}
+
+#settingsTable{padding:5px; margin-top:5px; border:0 none;}
+#settingsTable td{height:25px;}
+#confirmSettingsBtnModal{margin-top:10px}
+.logoutForm{max-width:530px; text-align:center;}
+#loggedOutLink{display:inline-block; margin:100px 20px;}
+#spinnerAnimation {width: 32px; height: 32px; z-index: 1000; top:0; float: right;
+    background: transparent url(/images/spinner.gif) center center no-repeat;}
+.branchForm,  .profileForm, .webCamForm, .accessRightsForm{
+    position:relative; border:1px solid black; background-color:#fefefe; top:0; padding:5px; margin:5% auto; z-index:1310;}
+.displayQueueSpinner{background-color: #f5f5f5; margin-top: 25%; white-space: nowrap; width: 365px; overflow: hidden;
+    text-overflow: ellipsis;}
+/* End modal popup stuff*/
+
+/*********** Popup ******************/
+.popup {
+	border: 1px solid #C0C0C0;
+	background-color: #FFFFFF;
+	position:absolute;
+	width:300px;
+	display:none;
+	z-index:9999;
+	padding:2px;
+	padding:4px 10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+	}
+
+/* Autocomplete styles */
+.ui-autocomplete {
+	max-height: 100px;
+	overflow-y: auto;
+}
+
+/*#header{margin-bottom:15px; padding-top:5px; border-bottom:3px solid #EEEEEE;} */
+#headerTable{margin:3px; padding:0;}
+#headerTable select{background:#fff; border:1px solid #9cb4d8; font-size:12px; margin:0; padding:0; height:19px;}
+#userName, #workstation, #branch{font-weight:bold;}
+.applySettingsButton{font-size:11px; height:20px; margin:0 5px; text-transform:uppercase;}
+input::-moz-focus-inner /*Remove button padding in FF*/{border: 0; padding: 0;}
+#appShortcuts{position:absolute; right:0; left:auto; top:6px; margin:5px 10px;}
+
+#modulesContainer{
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width:840px;
+    margin:80px 15px;
+}
+
+#modulesContainer h2{
+    background: #123456 url(/images/bg_header.gif) repeat-x;
+    color:white;
+    font-size:16px;
+    line-height:19px;
+    margin:0;
+    padding:4px 10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+}
+
+.subheader {
+    background: #010101 url(/images/bg_header.gif) repeat-x;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#displayQueueSpinnerText {
+    color:black;
+    font-size:16px;
+    line-height:19px;
+    margin:0;
+    padding:5px 10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    float: left;
+    width: 80%;
+}
+
+.module{
+    min-height:208px;
+    background:transparent;
+}
+
+.moduleContentContainer{
+    height:180px;
+    overflow:hidden;
+    border: 1px #EDEDED solid;
+    border-top: 0;
+    background: white;
+}
+
+.submodule {
+    min-height:104px;
+    background:transparent;
+}
+
+.submoduleContentContainer{
+    height:76px;
+    overflow:hidden;
+    border: 1px #EDEDED solid;
+    border-top: 0;
+    background: white;
+}
+.navbar-fixed-top{position:relative;}
+
+
+.settings {text-align:center; position:relative; bottom:2px;}
+
+
+/*********** Data panels ******************/
+#branchData {
+	width:100%;
+	text-align:center;
+}
+
+
+
+.dataPanel {
+	background:#fff;
+	color:#000;
+	border:	1px solid #e0e0e0; 
+	width:180px; 
+	height:100px;
+	display:block;
+	float:left;
+	text-align:	left;
+	margin:5px;
+	position:relative;
+	top:20px;
+	left:20px;
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-radius:5px 5px 0px 0px;
+}
+.dataPanel .dataHeader {
+	background: url("/images/bg_header.gif") repeat-x scroll 0 0 #123456;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius:5px 5px 5px 5px;
+    -webkit-border-radius:5px 5px 5px 5px;
+	height:40px; 
+	font-size: 14px;
+	color:white;
+	text-align:left;
+	font-weight: bold;
+	border-bottom: 1px solid #e0e0e0;
+}
+.dataPanel .dataHeader .title {
+	position:absolute; 
+	top:15px;
+}
+.dataPanel IMG {
+	padding:5px;
+}
+.dataPanel .metric {
+	font-size:50px;
+	font-weight:bold;
+	position:absolute;
+	bottom:-20px;
+	color:#444;
+	text-align:center;
+	width:100%;
+	height:60px;
+}
+.dataPanel .metric .time {
+	font-size:40px;
+}
+
+/** Main container for content **/
+#containerWrapper {
+	min-height: 100%;
+}
+#mainDatacontainer {
+	overflow: auto;
+	overflow-y: visible;
+	width: 100%;
+	bottom: 37px;
+	top: 61px;
+	position: absolute;
+}
+
+/*********** Panels ******************/
+.panels {
+	position:relative;
+	display:inline-block;
+	top:40px;
+	width: 100%;
+	height: 100%
+	overflow: visible;
+}
+.panel {
+	background:#fff;
+	border: 1px solid #e0e0e0;
+}
+.panel .panelHeader   {  
+	background: url("/images/bg_header.gif") repeat-x scroll 0 0 #123456;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0;
+    padding: 4px 10px;
+}
+
+.panel .panelContent {
+	padding: 3px;
+}
+#queuePanel {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 450px;
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-radius:5px 5px 0px 0px;
+}
+#workstationPanel {
+	position: absolute;
+	top: 10px;
+	left: 480px;
+	width: 700px;
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-radius:5px 5px 0px 0px;
+}
+
+/************* Generic table stuff ***************/
+ #tickets,  #queues,  #workstations {
+	width:100%; 
+	background:transparent; 
+	border-collapse:collapse;
+}
+ #tickets td, #queues td, #workstations td  {
+	padding:5px 10px; 
+	border-bottom:1px solid #c0c0c0;
+}
+/*.evenRow{background:#ebebeb;}*/
+
+.lastCol{text-align:right;}
+.hide{display:none;}
+.margin-top {
+    margin-top: 5px !important;
+}
+
+.subTable td{
+    border: 0;
+    border-bottom: 0 !important;
+    padding-left:50px;
+}
+
+.subTable tr:hover{
+    background-color: #FFDEAD;
+    border: solid 1px #efefef;
+    cursor: pointer;
+}
+
+tr.odd {
+    background-color: #F3F7FB;
+}
+
+tr.even {
+    background-color: white;
+}
+
+/*
+    Black Theme part, some stuff is overridden to make better use of available screen height
+*/
+
+.treeMenuMenu {
+    border-right: 1px solid #010101;
+}
+
+.header {
+    min-height:58px !important;
+    height: 58px;
+    background:url(/images/glow.png) -80px 0 no-repeat;
+    border-bottom:3px #eee solid;
+}
+
+.header table {
+    width: 100%;
+    height: auto;
+}
+
+.application-name {
+    height: 20px;
+    padding:0 0 0 0;
+}
+
+.warningmessage {
+    padding: 6px;
+    margin-left: 2px;
+    margin-right: 2px;
+    position:relative;
+}

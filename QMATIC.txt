@@ -1,0 +1,354 @@
+Map-də göstərilən datalar üçün metodun ilkin versiyası
+QmaticMap/getMapData   get metod(umumi cagirmaq isteseniz)
+RESPONSE:
+{
+    "customersWaiting": 21,
+    "openServicePoints": 0,
+    "maxWaitingTime": "1474:4:12",
+    "averageWaitingTime": "1474:2:43",
+    "customersBeingServed": 0,
+    "noShow": 202,
+    "removed": 1541,
+    "servedCustomers": 1044,
+    "averageServingTime": "0:7:35",
+    "closedServicePoints": 81
+}
+
+Hisse hisse metodlar daha suretlidi
+QmaticMap/getMapDataCusWait  get metod
+RESPONSE:
+{
+    "customersWaiting": 21
+}
+
+QmaticMap/getMapDataOpenPoint  get metod
+RESPONSE:
+{
+    "openServicePoints": 0
+}
+
+QmaticMap/getMapMaxWaitData  get metod
+RESPONSE:
+{
+     "maxWaitingTime": "1474:4:12"
+}
+
+QmaticMap/getMapAveWaitData  get metod
+RESPONSE:
+{
+    "averageWaitingTime": "0:0:0"
+}
+
+QmaticMap/getMapCusBeingServedData  get metod
+RESPONSE:
+{
+    "customersBeingServed": 0
+}
+
+QmaticMap/getMapNoShowData  get metod
+RESPONSE:
+{
+    "noShow": 202
+}
+
+QmaticMap/getMapRemovedData  get metod
+RESPONSE:
+{
+    "removed": 1565
+}
+
+
+QmaticMap/getMapServCusData get metod
+RESPONSE:
+{
+    "servedCustomers": 1044
+}
+
+QmaticMap/getMapAveServTimeData  get metod
+RESPONSE:
+{
+    "averageServingTime": "0:7:33"
+}
+
+QmaticMap/getMapClosePointData  get metod
+RESPONSE:
+{
+    "closedServicePoints": 81
+}
+
+
+
+MAp-da time sehifesi ucun 
+QmaticMap/getMapTimeData  get metod
+[
+    {
+        "id": 28,
+        "name": "Filial 13",
+        "averageWaitingTime": 0,
+        "status": false
+    },
+    {
+        "id": 33,
+        "name": "Azer bank",
+        "averageWaitingTime": 0,
+        "status": false
+    },
+    ...,
+    {
+        "id": 24,
+        "name": "Filial 9",
+        "averageWaitingTime": 0,
+        "status": false
+    }
+]
+
+
+MAp-da time sehifesi ucun 
+QmaticMap/getMapPercentData  get metod
+[
+    {
+        "id": 27,
+        "name": "Filial 14",
+        "percent": 0
+    },
+    {
+        "id": 19,
+        "name": "Filial 4",
+        "percent": 0
+    },
+    ...,
+    {
+        "id": 24,
+        "name": "Filial 9",
+        "percent": 0
+    }
+]
+
+
+
+Total branch sehifesinin datalari
+QmaticMap/getTotalBranch get metod
+RESPONSE:
+[
+    {
+        "id": 28,
+        "branchName": "Filial 13",
+        "totalVisits": 0,
+        "served": 0,
+        "waiting": 0,
+        "freeUsers": 0,
+        "maxFreeTime": null,
+        "openServicePoints": 0,
+        "closedServicePoints": 1
+    }, {
+        "id": 33,
+        "branchName": "Azer bank",
+        "totalVisits": 0,
+        "served": 0,
+        "waiting": 0,
+        "freeUsers": 0,
+        "maxFreeTime": null,
+        "openServicePoints": 0,
+        "closedServicePoints": 0
+    },
+    ...,
+    {
+        "id": 24,
+        "branchName": "Filial 9",
+        "totalVisits": 10,
+        "served": 0,
+        "waiting": 5,
+        "freeUsers": 0,
+        "maxFreeTime": null,
+        "openServicePoints": 0,
+        "closedServicePoints": 1
+    }
+]
+
+Total branch sehifesinin datalari
+QmaticMap/getTotalBranchByDepartment post metod
+REQUEST:
+{
+ 
+ "departmentName":"Satish"
+ 
+}
+RESPONSE:
+[
+    {
+        "id": 28,
+        "branchName": "Filial 13",
+        "totalVisits": 0,
+        "served": 0,
+        "waiting": 0,
+        "factualEmployee": 0,
+        "currentEmployee": 0,
+        "vacation": 0,
+        "tripTo": 0,
+        "tripFrom": 0
+    },
+    {
+        "id": 24,
+        "branchName": "Filial 9",
+        "totalVisits": 0,
+        "served": 0,
+        "waiting": 5,
+        "factualEmployee": 0,
+        "currentEmployee": 0,
+        "vacation": 0,
+        "tripTo": 0,
+        "tripFrom": 0
+    },
+    ...,
+    {
+        "id": 7,
+        "branchName": "Ziraat",
+        "totalVisits": 19,
+        "served": 5,
+        "waiting": 0,
+        "factualEmployee": 0,
+        "currentEmployee": 0,
+        "vacation": 0,
+        "tripTo": 0,
+        "tripFrom": 0
+    }
+
+
+
+Counters sehifesi ucun 
+QmaticMap/getCountersData  post metod
+REQUEST:
+{
+ "servicePointId":"420000000001",
+    "branchId":"1"
+
+}
+
+RESPONSE:
+{
+    "serviceName": "",
+    "ticketNo": "",
+    "servingTime": "0:0:0",
+    "freeTime": null,
+    "freeTC": 0,
+    "totalSessionTime": null,
+    "totalFreeTime": null,
+    "served": 87,
+    "walkDirect": 3,
+    "noShow": 22,
+    "rejected": 0,
+    "averageServingTime": "0:34:59",
+    "totalServingTime": "3:43:45",
+    "serviceList": [
+        {
+            "id": 26,
+            "name": "Kassa huquqi",
+            "served": 9,
+            "walkDirect": 0,
+            "noShow": 2,
+            "rejected": 0,
+            "averageServingTime": "0:0:4",
+            "totalServingTime": "0:0:40"
+        },
+        {
+            "id": 27,
+            "name": "Xidmet huquqi",
+            "served": 12,
+            "walkDirect": 0,
+            "noShow": 1,
+            "rejected": 0,
+            "averageServingTime": "0:0:8",
+            "totalServingTime": "0:1:42"
+        },
+        {
+            "id": 4,
+            "name": "Birkart resmileshdirilmesi",
+            "served": 10,
+            "walkDirect": 0,
+            "noShow": 6,
+            "rejected": 0,
+            "averageServingTime": "0:0:12",
+            "totalServingTime": "0:2:7"
+        },
+        {
+            "id": 11,
+            "name": "KartAlinmasi",
+            "served": 2,
+            "walkDirect": 0,
+            "noShow": 0,
+            "rejected": 0,
+            "averageServingTime": "0:25:1",
+            "totalServingTime": "0:50:3"
+        },
+        {
+            "id": 9,
+            "name": "Kassa",
+            "served": 3,
+            "walkDirect": 0,
+            "noShow": 1,
+            "rejected": 0,
+            "averageServingTime": "0:0:29",
+            "totalServingTime": "0:1:28"
+        },
+        {
+            "id": 17,
+            "name": "Service 1",
+            "served": 2,
+            "walkDirect": 0,
+            "noShow": 0,
+            "rejected": 0,
+            "averageServingTime": "0:0:14",
+            "totalServingTime": "0:0:29"
+        },
+        {
+            "id": 10,
+            "name": "Emelliyat1",
+            "served": 1,
+            "walkDirect": 0,
+            "noShow": 0,
+            "rejected": 0,
+            "averageServingTime": "0:0:0",
+            "totalServingTime": "0:0:0"
+        },
+        {
+            "id": 14,
+            "name": "BirKartRessimlesdirilmesi",
+            "served": 6,
+            "walkDirect": 0,
+            "noShow": 0,
+            "rejected": 0,
+            "averageServingTime": "0:0:27",
+            "totalServingTime": "0:2:45"
+        },
+        {
+            "id": 6,
+            "name": "Valyuta mubadilesi",
+            "served": 12,
+            "walkDirect": 0,
+            "noShow": 1,
+            "rejected": 0,
+            "averageServingTime": "0:0:14",
+            "totalServingTime": "0:2:50"
+        },
+        {
+            "id": 3,
+            "name": "Kart alinmasi",
+            "served": 10,
+            "walkDirect": 0,
+            "noShow": 5,
+            "rejected": 0,
+            "averageServingTime": "0:0:11",
+            "totalServingTime": "0:1:51"
+        },
+        {
+            "id": 1,
+            "name": "BirKart",
+            "served": 20,
+            "walkDirect": 3,
+            "noShow": 6,
+            "rejected": 0,
+            "averageServingTime": "0:7:59",
+            "totalServingTime": "2:39:50"
+        }
+    ]
+}
